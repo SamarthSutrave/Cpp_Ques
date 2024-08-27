@@ -35,22 +35,18 @@
 #include <vector>
 #include <string>
 
+using namespace std;
+
 class Solution {
 public:
-    std::string longestCommonPrefix(std::vector<std::string>& strs) {
-        // If the array is empty, return an empty string
+    string longestCommonPrefix(vector<string>& strs) {
         if (strs.empty()) return "";
 
-        // Initialize the prefix to the first string
-        std::string prefix = strs[0];
+        string prefix = strs[0];
 
-        // Traverse the array of strings
         for (int i = 1; i < strs.size(); i++) {
-            // Find the common prefix between prefix and strs[i]
             while (strs[i].find(prefix) != 0) {
-                // Reduce the prefix by one character
                 prefix = prefix.substr(0, prefix.length() - 1);
-                // If no common prefix exists, return an empty string
                 if (prefix.empty()) return "";
             }
         }
@@ -61,29 +57,25 @@ public:
 
 int main() {
     Solution solution;
-    std::vector<std::string> strs;
+    vector<string> strs;
     int n;
 
-    // Taking user input for the number of strings
-    std::cout << "Enter the number of strings: ";
-    std::cin >> n;
+    cout << "Enter the number of strings: ";
+    cin >> n;
 
-    // Taking user input for the strings
-    std::cout << "Enter the strings:" << std::endl;
+    cout << "Enter the strings:" << endl;
     for (int i = 0; i < n; i++) {
-        std::string str;
-        std::cin >> str;
+        string str;
+        cin >> str;
         strs.push_back(str);
     }
 
-    // Finding the longest common prefix
-    std::string result = solution.longestCommonPrefix(strs);
+    string result = solution.longestCommonPrefix(strs);
 
-    // Displaying the result
     if (result.empty()) {
-        std::cout << "There is no common prefix among the strings." << std::endl;
+        cout << "There is no common prefix among the strings." << endl;
     } else {
-        std::cout << "The longest common prefix is: " << result << std::endl;
+        cout << "The longest common prefix is: " << result << endl;
     }
 
     return 0;
